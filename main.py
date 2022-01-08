@@ -33,7 +33,7 @@ app = Client("JayBee", bot_token=bot_token, api_id=api, api_hash=hash, workers=w
 def start(client, message):
     kb = [[InlineKeyboardButton('Channel 🛡', url=chnnl),InlineKeyboardButton('Repo 🔰', url="https://github.com/TerminalWarlord/TikTok-Downloader-Bot/")]]
     reply_markup = InlineKeyboardMarkup(kb)
-    app.send_message(chat_id=message.from_user.id, text=f"Hello there, I am **TikTok Downloader Bot**.\nI can download TikTok video without Watermark.\n\n"
+    app.send_message(chat_id=message.from_user.id, text=f"Привет друг, Я **Бот для скачивания видео с тик ток**.\n Я могу скачать видео с тик ток , без водяного знака и в отличном качестве.\n\n"
                           "__**Developer :**__ __@JayBeeDev__\n"
                           "__**Language :**__ __Python__\n"
                           "__**Framework :**__ __🔥 Pyrogram__",
@@ -47,8 +47,8 @@ def start(client, message):
 def help(client, message):
     kb = [[InlineKeyboardButton('Channel 🛡', url=chnnl),InlineKeyboardButton('Repo 🔰', url="https://github.com/TerminalWarlord/TikTok-Downloader-Bot/")]]
     reply_markup = InlineKeyboardMarkup(kb)
-    app.send_message(chat_id=message.from_user.id, text=f"Hello there, I am **TikTok Downloader Bot**.\nI can download any TikTok video from a given link.\n\n"
-                                            "__Send me a TikTok video link__",
+    app.send_message(chat_id=message.from_user.id, text=f"Привет друг, Я ** Бот для скачивания видео с тик ток **.\n Я помогу скачать видео с тик ток с помощью ссылки.\n\n"
+                                            "__Отправь мне ссылку на видео__",
                      parse_mode='md',
                      reply_markup=reply_markup)
 
@@ -56,7 +56,7 @@ def help(client, message):
 @app.on_message((filters.regex("http://")|filters.regex("https://")) & (filters.regex('tiktok')|filters.regex('douyin')))
 def tiktok_dl(client, message):
     a = app.send_message(chat_id=message.chat.id,
-                         text='__Downloading File to the Server__',
+                         text='__Скачиваю видео с сервера__',
                          parse_mode='md')
     link = re.findall(r'\bhttps?://.*[(tiktok|douyin)]\S+', message.text)[0]
     link = link.split("?")[0]
@@ -99,9 +99,9 @@ def tiktok_dl(client, message):
                     percent = 100
                 if show == 1:
                     try:
-                        a.edit(f'__**URL :**__ __{message.text}__\n'
-                               f'__**Total Size :**__ __{total_size} MB__\n'
-                               f'__**Downloaded :**__ __{percent}%__\n',
+                        a.edit(f'__**Ссылка :**__ __{message.text}__\n'
+                               f'__**Размер файла :**__ __{total_size} MB__\n'
+                               f'__**Скачивания :**__ __{percent}%__\n',
                                disable_web_preview=False)
                     except:
                         pass
